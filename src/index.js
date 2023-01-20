@@ -1,17 +1,49 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import {
+  ChakraProvider,
+  theme,
+} from '@chakra-ui/react';
+import { ColorModeScript } from '@chakra-ui/react';
+import React, { StrictMode } from 'react';
+import * as ReactDOM from 'react-dom/client';
+import { 
+  RouterProvider,
+  createBrowserRouter 
+} from 'react-router-dom';
+
+//Routes
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import User from './routes/User';
+import Repo from './routes/Repo';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+//Contexts
+import GithubProvider from './githubContext';
+
+const router = new createBrowserRouter([
+  {
+    path: '/',
+    element: <App />
+  },
+  {
+    path: '/:user',
+    element: <User />
+  },
+  {
+    path: '/:user/:repo',
+    element: <Repo />
+  }
+]);
+
+
+const container = document.getElementById('root');
+const root = ReactDOM.createRoot(container);
+
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <StrictMode>
+    <ColorModeScript />
+    <ChakraProvider theme={theme}>
+      <GithubProvider > 
+        <RouterProvider router={router} />
+      </GithubProvider>
+    </ChakraProvider>
+  </StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
