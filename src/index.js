@@ -10,6 +10,9 @@ import {
   createBrowserRouter 
 } from 'react-router-dom';
 
+//css
+import './styles.css';
+
 //Routes
 import App from './App';
 import User from './routes/User';

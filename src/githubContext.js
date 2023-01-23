@@ -8,7 +8,8 @@ export default function GithubProvider(props) {
     value={{
         querryUser: API.querryUser,
         getRepositories: API.getRepositories,
-        getRepository: API.getRepository
+        getRepository: API.getRepository,
+        getCommits: API.getCommits
     }}>
       {props.children}
     </GithubContext.Provider>
@@ -43,4 +44,12 @@ const API = {
       const data = await response.json();
       return data;
     },
+    getCommits: async (user, repo) => {
+      let header = {
+        'Authorization' : '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'
+      };
+      const response = await fetch(`https://api.github.com/repos/${user}/${repo}/commits`, header);
+      const data = await response.json();
+      return data;
+    }
 }

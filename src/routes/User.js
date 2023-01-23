@@ -55,7 +55,7 @@ export default function User(){
                                     <Text as='h2' size="md">Repo Language: {repo.language}</Text>
                                 </CardBody>
                                 <CardFooter>
-                                    <Link colorScheme='blue' to={`/${user}/${repo.name}`}><Button>View here</Button></Link>
+                                    <Link to={`/${user}/${repo.name}`}><Button>View here</Button></Link>
                                 </CardFooter>
                             </Card>
                         )
