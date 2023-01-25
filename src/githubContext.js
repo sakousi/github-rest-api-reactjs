@@ -1,5 +1,7 @@
 import { createContext } from "react";
 
+const secret = require('./private.json');
+
 export const GithubContext = createContext(null);
 
 export default function GithubProvider(props) {
@@ -16,12 +18,13 @@ export default function GithubProvider(props) {
   );
 }
 
+
 const API = {
     querryUser: async (user) => {
       let header = {
         method: 'GET',
         headers: {
-          'Authorization': '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'
+          'Authorization': secret.secret
         }
       };
       const response = await fetch(`https://api.github.com/users/${user}`, header);
@@ -30,7 +33,7 @@ const API = {
     },
     getRepositories: async (user) => {
       let header = {
-        'Authorization': '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'
+        'Authorization': secret.secret
       };
       const response = await fetch(`https://api.github.com/users/${user}/repos`, header);
       const data = await response.json();
@@ -38,7 +41,7 @@ const API = {
     },
     getRepository: async (user, repo) => {
       let header = {
-        'Authorization': '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'
+        'Authorization': secret.secret
       };
       const response = await fetch(`https://api.github.com/repos/${user}/${repo}`, header);
       const data = await response.json();
@@ -46,7 +49,7 @@ const API = {
     },
     getCommits: async (user, repo) => {
       let header = {
-        'Authorization' : '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'
+        'Authorization' : secret.secret
       };
       const response = await fetch(`https://api.github.com/repos/${user}/${repo}/commits`, header);
       const data = await response.json();

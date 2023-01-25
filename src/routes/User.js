@@ -20,6 +20,7 @@ export default function User(){
     console.log(repos);
     return (
     <Box textAlign="center" fontSize="xl">
+        <Link to='/'><Button>Back to main menu</Button></Link>
         <Grid minH="100vh" p={3}>
             <ColorModeSwitcher justifySelf="flex-end" />
             <Box width="75%" minH="100vh" justifySelf='center' display='flex' flexDirection="column" justifyContent="flex-start">
@@ -51,7 +52,7 @@ export default function User(){
                                     <Heading size='md'>Repo Name: {repo.name}</Heading>
                                 </CardHeader>
                                 <CardBody>
-                                    <Text as='s' size="md">{repo.description}</Text>
+                                    <Text as='p' size="md">{repo.description}</Text>
                                     <Text as='h2' size="md">Repo Language: {repo.language}</Text>
                                 </CardBody>
                                 <CardFooter>

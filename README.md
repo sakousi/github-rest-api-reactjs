@@ -1,5 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Avant de lancer le script
+
+Dans le projet dans le dossier `src` créé un fichier nommée `private.json`
+Et y inscrire le code si dessous:
+```json
+{
+    "secret": "Insert GitHub API token"
+}
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
